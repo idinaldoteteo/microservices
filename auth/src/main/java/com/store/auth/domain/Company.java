@@ -1,12 +1,17 @@
 package com.store.auth.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,4 +31,8 @@ public class Company {
 	private Long id;
 	
 	private String name;
+		
 }
+
+//@OneToOne(mappedBy = "company", cascade = CascadeType.ALL)
+//private Set<User> users = new HashSet<>();
