@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="`user`")
+@Table(name="tbuser")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,26 +27,27 @@ import lombok.Setter;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class User {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	private String name;
-	
-	@Column(unique = true, nullable = false)
-	private String username;
-	
-	@Column(unique = true, nullable = false)
-	private String email;
-	
-	@Column(nullable = false)
-	private String password;
-	
-	@Column(nullable = false)
-	private String role;
-	
-	@ManyToOne(fetch = FetchType.LAZY, optional = true)
-	@JoinColumn(name = "company_id")
-	private Company company;
-	
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@JsonManagedReference
+    private Long id;
+
+    private String name;
+
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    private String role;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional=true)
+    @JoinColumn(name = "id_company")
+    @JsonBackReference
+    private Company company;
 }

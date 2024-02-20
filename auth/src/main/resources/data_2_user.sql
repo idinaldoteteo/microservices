@@ -1,2 +1,2 @@
-insert into "user" (name, username, email, password, role, company_id) values('Idinaldo Teteo vendedor', 'idinaldoSale', 'idinaldo@gmail.com', '123456', 1 , 1);
-insert into "user" (name, username, email, password, role, company_id) values('Idinaldo Teteo cliente', 'idinaldoClient', 'idinaldoteteo@gmail.com', '123456', 1 , null);
+insert into tbuser (name, username, email, password, role, id_company) values('Idinaldo Teteo vendedor', 'idinaldoSale', 'idinaldo@gmail.com', '123456', 1 , 1);
+insert into tbuser (name, username, email, password, role, id_company) values('Idinaldo Teteo cliente', 'idinaldoClient', 'idinaldoteteo@gmail.com', '123456', 1 , null);
