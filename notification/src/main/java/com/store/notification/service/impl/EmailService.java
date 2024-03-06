@@ -35,6 +35,7 @@ public class EmailService implements IEmailService {
 			return null;		
 		}
 	}
+	
 	public void sendEmail(String content, String email, String subject) {
 		
 		SimpleMailMessage message = new SimpleMailMessage();		

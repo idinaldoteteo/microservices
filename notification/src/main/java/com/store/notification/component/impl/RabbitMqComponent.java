@@ -28,16 +28,10 @@ public class RabbitMqComponent implements IRabbitMqComponent {
 		try {
 			System.out.println("mensagem:" + message);
 			
-			// Pegar o usuário
-			
-			//Passar o Template como exemplo de preenchimento
-			//String content = emailService.constructContent();
-			
 			Map<String, Object> map = emailService.convertToObject(message);
 			
-			int order_id = (int)map.get("order_id");
 			int user_id = (int)map.get("user_id");
-			String productName = map.get("product_name").toString();
+			String productName = map.get("orderItems").toString();
 			
 			String response = webClient.get()
 											.uri("/user/" + user_id)
@@ -51,7 +45,7 @@ public class RabbitMqComponent implements IRabbitMqComponent {
 			
 			String email = map.get("email").toString();
 			
-			emailService.sendEmail("MENSAGEM CORPO",email, productName);
+			emailService.sendEmail("MENSAGEM CORPO vc comprou o produto id: " + productName, email, "Produto XPTO");
 			
 			System.out.println("email enviado para: " + email);	
 			
