@@ -31,8 +31,14 @@ public class GenericController<T> {
 
     @GetMapping("/{id}")
     public ResponseEntity<T> get(@PathVariable Long id, String noSuchElementException){
-        T item = service.get(id, noSuchElementException);
-        return new ResponseEntity<>(item, HttpStatus.OK);
+        try {
+        	T item = service.get(id, noSuchElementException);
+        	return new ResponseEntity<>(item, HttpStatus.OK);
+		
+		} catch (Exception e) {
+				return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+		}
+        
     }
 
     @PostMapping
