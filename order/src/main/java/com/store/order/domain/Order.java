@@ -14,6 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,16 +38,17 @@ public class Order {
 	@Column
 	private Integer status = 1;
 	
-	@Column(nullable = false, updatable = false)
-	private Long userId;
+	@Column(name = "user_id", nullable = false, updatable = false)
+	private Long user_id;
 	
 	@Column(nullable = false, updatable = false)
 	private LocalDateTime createAt;
 	
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<OrderItem> orderItem = new HashSet<>();
+	private Set<OrderItem> orderItems = new HashSet<>();
 	
-	public void onCreate() {
+	@PrePersist
+	protected void onCreate() {
 		createAt = LocalDateTime.now();		
 	}
 }

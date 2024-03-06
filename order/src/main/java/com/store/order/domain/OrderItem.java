@@ -31,12 +31,12 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
-	private Long productId;
+	@Column(name = "product_id", nullable = false)
+	private Long product_id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id")
-	@JsonBackReference
+	@JsonBackReference	
 	private Order order;
 	
 }
